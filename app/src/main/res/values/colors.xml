@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="write">#FFFFFF</color>
+
+    <color name="my_bg_start">#3F51B5</color>
+    <color name="my_bg_end">#4169E1</color>
+    <color name="my_bg_selected_start">#3F51B5</color>
+    <color name="my_bg_selected_end">#4169E1</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <color name="text_Grey">#c1c1c2</color>
+</resources>

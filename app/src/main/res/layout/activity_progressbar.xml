@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        app:qmui_topbar_title_color="@color/write" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar"
+        android:background="@color/write">
+
+        <com.qmuiteam.qmui.widget.QMUIProgressBar
+            android:id="@+id/progress_1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/write"
+            android:textSize="16sp"
+            app:qmui_background_color="#CCC"
+            app:qmui_max_value="100"
+            app:qmui_progress_color="@color/colorPrimary"
+            app:qmui_type="type_rect" />
+
+        <com.qmuiteam.qmui.widget.QMUIProgressBar
+            android:id="@+id/progress_2"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_below="@+id/progress_1"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:qmui_background_color="#CCC"
+            app:qmui_max_value="100"
+            app:qmui_progress_color="@color/colorPrimary"
+            app:qmui_stroke_width="40dp"
+            app:qmui_type="type_circle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/rl_bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/startBtn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:shadowRadius="10"
+                android:text="开始" />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/endBtn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:shadowRadius="10"
+                android:text="结束" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp">
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/start_btn_progress"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:shadowRadius="10"
+                android:text="下载" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
