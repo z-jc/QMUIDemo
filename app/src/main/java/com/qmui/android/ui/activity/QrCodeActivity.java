@@ -49,7 +49,7 @@ public class QrCodeActivity extends BaseActivity implements View.OnClickListener
     /**
      * 初始化UI
      */
-    private void initView() {
+    public void initView() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("扫码识别");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {

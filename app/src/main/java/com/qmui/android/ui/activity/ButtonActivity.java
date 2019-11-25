@@ -46,7 +46,8 @@ public class ButtonActivity extends BaseActivity {
         initView();
     }
 
-    private void initView() {
+    @Override
+    public void initView() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("按钮控件");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {

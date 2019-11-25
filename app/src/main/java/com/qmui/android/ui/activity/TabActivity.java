@@ -42,7 +42,7 @@ public class TabActivity extends BaseActivity {
         }
     }
 
-    private void initView() {
+    public void initView() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("阴影背景");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {

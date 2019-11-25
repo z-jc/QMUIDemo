@@ -59,6 +59,10 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
         initTopBar();
     }
 
+    @Override
+    public void initView() {
+    }
+
     private void initTopBar() {
         presenter = new MainPresenterImpl(this);
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
@@ -157,7 +161,16 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
                         });
                 break;
             case 9:
-                startActivity(getIntent(this,new CustomActivity()));
+                startActivity(getIntent(this, new CustomActivity()));
+                break;
+            case 10:
+                startActivity(getIntent(this, new AdActivity()));
+                break;
+            case 11:
+                startActivity(getIntent(this, new VideoActivity()));
+                break;
+            case 12:
+                startActivity(getIntent(this, new ImageComPressionActivity()));
                 break;
             default:
                 ToastUtil.showShortToastCenter(this, mainAdapter.list.get(position));

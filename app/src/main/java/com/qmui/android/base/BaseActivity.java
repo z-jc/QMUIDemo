@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.qmui.android.ui.dialog.DialogLoading;
 import com.qmuiteam.qmui.arch.QMUIActivity;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qw.soul.permission.SoulPermission;
@@ -22,7 +23,7 @@ import com.qw.soul.permission.callbcak.CheckRequestPermissionsListener;
  * Date : 2019/10/23
  * Describe :
  */
-public class BaseActivity extends QMUIActivity {
+public abstract class BaseActivity extends QMUIActivity {
 
     public String TAG = getClass().getSimpleName();
 
@@ -32,6 +33,8 @@ public class BaseActivity extends QMUIActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.RECORD_AUDIO
     };
+
+    public DialogLoading dialogLoading = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,12 +68,34 @@ public class BaseActivity extends QMUIActivity {
                                 }).create().show();
                     }
                 });
-
     }
+
+    public abstract void initView();
 
     public Intent getIntent(Activity startAct, Activity endAct) {
         Intent intent = new Intent(startAct, endAct.getClass());
         return intent;
     }
 
+    public void showLoading() {
+        if (dialogLoading != null) {
+            dialogLoading.dismiss();
+            dialogLoading = null;
+        }
+        dialogLoading = new DialogLoading(this);
+        dialogLoading.show();
+    }
+
+    public void dismissLoading() {
+        if (dialogLoading != null) {
+            dialogLoading.dismiss();
+            dialogLoading = null;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dismissLoading();
+    }
 }

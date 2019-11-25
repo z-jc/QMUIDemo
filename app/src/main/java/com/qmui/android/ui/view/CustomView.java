@@ -6,8 +6,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.annotation.Nullable;
+import com.qmui.android.bean.TouchEvent;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Author : Z-JC
@@ -39,13 +40,16 @@ public class CustomView extends View {
     public boolean dispatchTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.e(TAG, "手指刚接触屏幕");
+                Log.e(TAG, "dispatchTouchEvent手指刚接触屏幕");
+                EventBus.getDefault().post(new TouchEvent("----->dispatchTouchEvent:刚触摸屏幕"));
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.e(TAG, "手指移动");
+                Log.e(TAG, "dispatchTouchEvent手指移动");
+                EventBus.getDefault().post(new TouchEvent("----->dispatchTouchEvent:手指移动"));
                 break;
             case MotionEvent.ACTION_UP:
-                Log.e(TAG, "手指离开屏幕");
+                Log.e(TAG, "dispatchTouchEvent手指离开屏幕");
+                EventBus.getDefault().post(new TouchEvent("----->dispatchTouchEvent:手指离开屏幕"));
                 break;
         }
         return super.dispatchTouchEvent(event);
@@ -55,13 +59,16 @@ public class CustomView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.e(TAG, "手指刚接触屏幕");
+                Log.e(TAG, "onTouchEvent手指刚接触屏幕");
+                EventBus.getDefault().post(new TouchEvent("----->onTouchEvent:刚触摸屏幕"));
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.e(TAG, "手指移动");
+                Log.e(TAG, "onTouchEvent手指移动");
+                EventBus.getDefault().post(new TouchEvent("----->正在移动,当前触摸点坐标X:" + event.getX() + ",Y:" + event.getY()));
                 break;
             case MotionEvent.ACTION_UP:
-                Log.e(TAG, "手指离开屏幕");
+                Log.e(TAG, "onTouchEvent手指离开屏幕");
+                EventBus.getDefault().post(new TouchEvent("----->onTouchEvent:手指离开屏幕"));
                 break;
         }
         return super.onTouchEvent(event);

@@ -40,14 +40,15 @@ public class MvcActivity extends BaseActivity implements OnWeatherListener, View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvc);
         ButterKnife.bind(this);
-        weatherModel = new WeatherModelImpl();
         initView();
     }
 
     /**
      * 初始化View
      */
-    private void initView() {
+    public void initView() {
+        weatherModel = new WeatherModelImpl();
+
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("MVC测试Demo");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {

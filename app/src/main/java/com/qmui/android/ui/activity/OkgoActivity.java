@@ -34,7 +34,6 @@ public class OkgoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_okgo);
         ButterKnife.bind(this);
-
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("约束布局和Okgo");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
@@ -45,6 +44,9 @@ public class OkgoActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    public void initView() {}
 
     private void okgo() {
         String url = "https://suggest.taobao.com/sug?code=utf-8&q=男士鞋&callback=cb";

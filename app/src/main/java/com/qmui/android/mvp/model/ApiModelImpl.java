@@ -31,6 +31,9 @@ public class ApiModelImpl implements ApiModel {
                 list.add("8.去扫码");
                 list.add("9.美图秀秀拼图");
                 list.add("10.自定义View");
+                list.add("11.激励视频广告");
+                list.add("12.视频播放");
+                list.add("13.图片压缩");
                 listener.onSuccess(list);
             }
         }, 500);

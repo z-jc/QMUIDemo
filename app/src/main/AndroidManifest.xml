@@ -8,10 +8,11 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
@@ -35,7 +36,7 @@
                 tools:replace="android:resource" />
         </provider>
 
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.ImageComPressionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +50,12 @@
         <activity android:name=".ui.activity.OkgoActivity" />
         <activity android:name=".ui.activity.QrCodeActivity" />
         <activity android:name=".ui.activity.CustomActivity" />
+        <activity android:name=".ui.activity.AdActivity" />
+        <activity android:name=".ui.activity.VideoActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.ShareActivity" />
+
+
     </application>
 
 </manifest>

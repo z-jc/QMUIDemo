@@ -52,7 +52,7 @@ public class ProgresBarActivity extends BaseActivity {
         initView();
     }
 
-    private void initView() {
+    public void initView() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("进度条");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
