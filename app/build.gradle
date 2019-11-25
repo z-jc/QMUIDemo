@@ -87,4 +87,6 @@ dependencies {
     //视频播放框架
     implementation project(path: ':giraffeplayer')
     implementation project(path: ':ijkplayer-java')
+
+    implementation 'top.zibin:Luban:1.1.8'
 }

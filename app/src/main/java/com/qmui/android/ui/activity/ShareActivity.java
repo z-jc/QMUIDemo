@@ -63,7 +63,7 @@ public class ShareActivity extends BaseActivity {
         cc = getIntent().getStringExtra("fileCc");
 
         Glide.with(this).load(path).into(imgPhoto);
-        tvImageData.setText(size + "\n" + cc);
+        tvImageData.setText(path + "\n" + size + "\n" + cc);
 
     }
 
