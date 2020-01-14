@@ -8,6 +8,7 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,6 +27,7 @@
         android:roundIcon="@mipmap/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <provider
             android:name=".provider.BasePrvovider"
             android:authorities="${applicationId}.fileprovider"
@@ -38,6 +40,7 @@
 
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -54,7 +57,8 @@
         <activity android:name=".ui.activity.VideoActivity" />
         <activity android:name=".ui.activity.ImageComPressionActivity" />
         <activity android:name=".ui.activity.ShareActivity" />
-
+        <activity android:name=".ui.activity.JiGuangShareActivity" />
+        <activity android:name=".ui.activity.LogisticsActivity" />
 
     </application>
 

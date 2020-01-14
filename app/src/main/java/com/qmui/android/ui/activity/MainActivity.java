@@ -172,6 +172,12 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
             case 12:
                 startActivity(getIntent(this, new ImageComPressionActivity()));
                 break;
+            case 13:
+                startActivity(getIntent(this, new JiGuangShareActivity()));
+                break;
+            case 14:
+                startActivity(getIntent(this, new LogisticsActivity()));
+                break;
             default:
                 ToastUtil.showShortToastCenter(this, mainAdapter.list.get(position));
                 break;

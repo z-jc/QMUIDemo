@@ -74,7 +74,6 @@ public class ProgresBarActivity extends BaseActivity {
                 return value + "/" + maxValue;
             }
         });
-
         testRunnable = new TestRunnable();
     }
 

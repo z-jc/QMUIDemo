@@ -1,7 +1,6 @@
 package com.qmui.android.mvp.model;
 
 import android.os.Handler;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +33,8 @@ public class ApiModelImpl implements ApiModel {
                 list.add("11.激励视频广告");
                 list.add("12.视频播放");
                 list.add("13.图片压缩");
+                list.add("14.极光分享");
+                list.add("15.物流查询");
                 listener.onSuccess(list);
             }
         }, 500);
