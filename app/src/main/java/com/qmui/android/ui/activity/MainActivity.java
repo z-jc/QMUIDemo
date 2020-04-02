@@ -2,20 +2,23 @@ package com.qmui.android.ui.activity;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.huantansheng.easyphotos.EasyPhotos;
 import com.huantansheng.easyphotos.callback.PuzzleCallback;
 import com.huantansheng.easyphotos.callback.SelectCallback;
 import com.huantansheng.easyphotos.models.album.entity.Photo;
 import com.qmui.android.R;
-import com.qmui.android.adapter.MainAdapter;
+import com.qmui.android.ui.adapter.MainAdapter;
 import com.qmui.android.base.BaseActivity;
 import com.qmui.android.mvp.presenter.MainPresenter;
 import com.qmui.android.mvp.presenter.MainPresenterImpl;
@@ -36,12 +39,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements MainAdapter.OnLister, MainView, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity implements MainAdapter.OnClicklinter, MainView, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.topbar)
     public QMUITopBar topbar;
-    @BindView(R.id.roundbutton)
-    public QMUIRoundButton roundbutton;
     @BindView(R.id.recyclerview)
     public RecyclerView recyclerview;
     @BindView(R.id.refreshlayout)
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initTopBar();
+        initView();
     }
 
     @Override
@@ -68,67 +70,74 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("控件列表");
 
-        mainAdapter = new MainAdapter(this, this);
+        mainAdapter = new MainAdapter(null, this);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         recyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerview.setAdapter(mainAdapter);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_main_header,null);
+        mainAdapter.setHeaderView(view);
 
         refreshlayout.setOnRefreshListener(this);
         refreshlayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_light, android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-    }
 
-    @OnClick(R.id.roundbutton)
-    public void onViewClicked() {
-        new QMUIDialog.MessageDialogBuilder(this)
-                .setMessage("确认请求最新数据吗?")
-                .setCancelable(true)//禁止按下返回false
-                .setCanceledOnTouchOutside(true)//禁止触摸false
-                .addAction("取消", new QMUIDialogAction.ActionListener() {
-                    @Override
-                    public void onClick(QMUIDialog dialog, int index) {
-                        dialog.dismiss();
-                    }
-                })
-                .addAction("确定", new QMUIDialogAction.ActionListener() {
-                    @Override
-                    public void onClick(QMUIDialog dialog, int index) {
-                        dialog.dismiss();
-                        mainAdapter.clear();
-                        presenter.getMainData();
-                        // TODO: 2019/10/23 去刷新
-                        tipDialog = new QMUITipDialog.Builder(MainActivity.this)
-                                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
-                                .setTipWord("正在刷新")
-                                .create();
-                        tipDialog.show();
-                    }
-                }).show();
+        QMUIRoundButton roundbutton = view.findViewById(R.id.roundbutton);
+        roundbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new QMUIDialog.MessageDialogBuilder(MainActivity.this)
+                        .setMessage("确认请求最新数据吗?")
+                        .setCancelable(true)//禁止按下返回false
+                        .setCanceledOnTouchOutside(true)//禁止触摸false
+                        .addAction("取消", new QMUIDialogAction.ActionListener() {
+                            @Override
+                            public void onClick(QMUIDialog dialog, int index) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .addAction("确定", new QMUIDialogAction.ActionListener() {
+                            @Override
+                            public void onClick(QMUIDialog dialog, int index) {
+                                dialog.dismiss();
+                                mainAdapter.getData().clear();
+                                mainAdapter.notifyDataSetChanged();
+                                presenter.getMainData();
+                                // TODO: 2019/10/23 去刷新
+                                tipDialog = new QMUITipDialog.Builder(MainActivity.this)
+                                        .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                                        .setTipWord("正在刷新")
+                                        .create();
+                                tipDialog.show();
+                            }
+                        }).show();
+            }
+        });
     }
 
     @Override
-    public void lister(int position) {
+    public void onClick(int position) {
         switch (position) {
-            case 0:
+            case 1:
                 startActivity(getIntent(this, new ButtonActivity()));
                 break;
-            case 1:
+            case 2:
                 startActivity(getIntent(this, new ProgresBarActivity()));
                 break;
-            case 2:
+            case 3:
                 startActivity(getIntent(this, new TabActivity()));
                 break;
-            case 3:
+            case 4:
                 ToastUtil.showShortToastCenter(this, "该功能暂未开放");
                 break;
-            case 4:
+            case 5:
                 startActivity(getIntent(this, new MvcActivity()));
                 break;
-            case 5:
+            case 6:
                 startActivity(getIntent(this, new OkgoActivity()));
                 break;
-            case 6:
+            case 7:
                 EasyPhotos.createCamera(this)//参数说明：上下文
                         .setFileProviderAuthority("com.qmui.android.fileprovider")//参数说明：见下方`FileProvider的配置`
                         .start(new SelectCallback() {
@@ -138,10 +147,10 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
                             }
                         });
                 break;
-            case 7:
+            case 8:
                 startActivity(getIntent(this, new QrCodeActivity()));
                 break;
-            case 8:
+            case 9:
                 EasyPhotos.createAlbum(this, false, GlideEngine.getInstance())
                         .setFileProviderAuthority("com.qmui.android.fileprovider")
                         .setPuzzleMenu(false)
@@ -160,29 +169,29 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
                             }
                         });
                 break;
-            case 9:
+            case 10:
                 startActivity(getIntent(this, new CustomActivity()));
                 break;
-            case 10:
+            case 11:
                 startActivity(getIntent(this, new AdActivity()));
                 break;
-            case 11:
+            case 12:
                 startActivity(getIntent(this, new VideoActivity()));
                 break;
-            case 12:
+            case 13:
                 startActivity(getIntent(this, new ImageComPressionActivity()));
                 break;
-            case 13:
+            case 14:
                 startActivity(getIntent(this, new JiGuangShareActivity()));
                 break;
-            case 14:
+            case 15:
                 startActivity(getIntent(this, new LogisticsActivity()));
                 break;
-            case 15:
+            case 16:
                 startActivity(getIntent(this, new NativeAvtivity()));
                 break;
             default:
-                ToastUtil.showShortToastCenter(this, mainAdapter.list.get(position));
+                ToastUtil.showShortToastCenter(this, mainAdapter.getData().get(position));
                 break;
         }
     }
@@ -200,12 +209,13 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
         if (tipDialog != null) {
             tipDialog.dismiss();
         }
-        mainAdapter.setData(list);
+        mainAdapter.setNewData(list);
     }
 
     @Override
     public void onRefresh() {
-        mainAdapter.clear();
+        mainAdapter.getData().clear();
         presenter.getMainData();
     }
+
 }

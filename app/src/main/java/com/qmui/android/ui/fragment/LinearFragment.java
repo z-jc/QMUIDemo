@@ -54,6 +54,9 @@ public class LinearFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(linearAdapter);
         linearAdapter.setNewData(getDataList());
+
+        //开启动画（默认为渐显效果）
+        //linearAdapter.openLoadAnimation();
     }
 
     public List<NativeEntity> getDataList() {

@@ -55,6 +55,9 @@ public class GridFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         recyclerView.setAdapter(gridAdapter);
         gridAdapter.setNewData(getDataList());
+
+        //开启动画（默认为渐显效果）
+        //gridAdapter.openLoadAnimation();
     }
 
     public List<NativeEntity> getDataList() {

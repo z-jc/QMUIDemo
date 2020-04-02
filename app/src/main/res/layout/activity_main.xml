@@ -18,28 +18,14 @@
         android:id="@+id/refreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/topbar">
+        android:layout_below="@+id/topbar"
+        android:background="@color/write">
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/write">
-
-            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                android:id="@+id/roundbutton"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:shadowRadius="10"
-                android:text="刷新" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/roundbutton" />
-        </RelativeLayout>
-
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/roundbutton" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
