@@ -110,6 +110,7 @@ dependencies {
     implementation project(path: ':ijkplayer-java')
 
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.6'
     implementation 'top.zibin:Luban:1.1.8'
+    implementation 'me.yokeyword:fragmentation:1.3.7'
 }

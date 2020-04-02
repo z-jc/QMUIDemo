@@ -20,4 +20,14 @@
         <!--模糊-->
     </style>
 
+    <!--Activity 样式-->
+    <style name="Theme.Act" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@color/write</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="colorPrimary">@color/write</item>
+        <item name="colorPrimaryDark">@color/write</item>
+        <item name="colorAccent">@color/write</item>
+    </style>
+
 </resources>
