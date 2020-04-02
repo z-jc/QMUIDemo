@@ -3,8 +3,9 @@ package com.qmui.android.app;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
+
+import com.qmui.android.util.AdManager;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
-import com.qq.e.o.ads.v2.Init;
 
 /**
  * CreateName : Z-JC
@@ -18,6 +19,7 @@ public class QMUIApp extends MultiDexApplication {
     @Override
     protected void attachBaseContext(Context base) {
         MultiDex.install(this);
+        AdManager.getInstance().initEntry(base);
         super.attachBaseContext(base);
     }
 
@@ -26,6 +28,6 @@ public class QMUIApp extends MultiDexApplication {
         super.onCreate();
         QMUISwipeBackActivityManager.init(this);
         context = getApplicationContext();
-        Init.initSDK(this,"test","C1000");
+        AdManager.getInstance().initSDK(context, "test","C1000", false, true);
     }
 }

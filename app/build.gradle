@@ -2,11 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def ch_name = "QMUI"
+def en_name = "qxj"
+
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.qmui.android"
-        //applicationId "com.tyrell.game.zt.cygs2"    //测试applicationId
+        //applicationId "com.qmui.android"
+        applicationId "com.tyrell.game.zt.cygs2"    //测试applicationId
 
         minSdkVersion 21
         targetSdkVersion 28
@@ -14,10 +17,25 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        resValue("string", "UMENG_KEY", "")
+        resValue("string", "app_name", ch_name)
+        //resValue("string", "CP_ID", "C1065")
+        resValue("string", "CP_ID", "C1000")
+        flavorDimensions "release"
+
         //配置rx
         packagingOptions {
             exclude 'META-INF/rxjava.properties'
             exclude 'META-INF/proguard/androidx-annotations.pro'
+        }
+    }
+    signingConfigs {
+        demo {
+            keyAlias 'key1'
+            keyPassword '123456'
+            storeFile file('src/keycode.jks')
+            storePassword '123456'
         }
     }
     buildTypes {
@@ -25,16 +43,25 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.demo
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-annotations:28.0.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //配置腾讯UI
@@ -78,15 +105,11 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
 
-    implementation files('libs\\HXSDK.10.2.9.aar')
-    implementation files('libs\\HXSDKADBytedance.10.2.9.aar')
-    implementation files('libs\\HXSDKADGuangdiantong.10.2.9.aar')
-    implementation files('libs\\HXSDKADMobvista.10.2.9.aar')
-    implementation files('libs\\HXSDKADOneway.10.2.9.aar')
-    implementation files('libs\\HXSDKADSigmob.10.2.9.aar')
     //视频播放框架
     implementation project(path: ':giraffeplayer')
     implementation project(path: ':ijkplayer-java')
 
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
     implementation 'top.zibin:Luban:1.1.8'
 }

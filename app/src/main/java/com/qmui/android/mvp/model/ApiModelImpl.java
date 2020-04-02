@@ -1,6 +1,7 @@
 package com.qmui.android.mvp.model;
 
 import android.os.Handler;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,6 @@ import java.util.List;
  * @class describe
  */
 public class ApiModelImpl implements ApiModel {
-
-    private String TAG = getClass().getSimpleName();
 
     @Override
     public void getMainData(final OnApiListener listener) {
@@ -35,6 +34,7 @@ public class ApiModelImpl implements ApiModel {
                 list.add("13.图片压缩");
                 list.add("14.极光分享");
                 list.add("15.物流查询");
+                list.add("16.加载多布局样式原生广告");
                 listener.onSuccess(list);
             }
         }, 500);

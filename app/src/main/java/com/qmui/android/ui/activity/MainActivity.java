@@ -178,6 +178,9 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnLister, 
             case 14:
                 startActivity(getIntent(this, new LogisticsActivity()));
                 break;
+            case 15:
+                ToastUtil.showShortToast(this, "加载多布局广告");
+                break;
             default:
                 ToastUtil.showShortToastCenter(this, mainAdapter.list.get(position));
                 break;

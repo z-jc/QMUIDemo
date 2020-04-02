@@ -77,16 +77,22 @@ public class ProgresBarActivity extends BaseActivity {
         testRunnable = new TestRunnable();
     }
 
+    private int index = 1;
+
     @OnClick({R.id.startBtn, R.id.endBtn, R.id.start_btn_progress})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.startBtn:
-                progress1.setProgress(100);
-                progress2.setProgress(100);
+                progress1.setProgress(index);
+                progress2.setProgress(index);
+                index++;
                 break;
             case R.id.endBtn:
-                progress1.setProgress(0);
-                progress2.setProgress(0);
+                if(index > 0){
+                    progress1.setProgress(index);
+                    progress2.setProgress(index);
+                    index--;
+                }
                 break;
             case R.id.start_btn_progress:
                 ProgressBuilder progressBuilder = new ProgressBuilder.Builder()
