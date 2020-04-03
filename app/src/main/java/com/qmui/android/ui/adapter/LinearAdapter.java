@@ -12,7 +12,6 @@ import com.qmui.android.bean.NativeEntity;
 import com.qmui.android.util.AdManager;
 import com.qq.e.o.HXInfoAdStyle;
 import com.qq.e.o.utils.DisplayUtil;
-import com.qq.e.o.utils.ILog;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ import java.util.List;
  */
 public class LinearAdapter extends BaseQuickAdapter<NativeEntity, BaseViewHolder> {
 
-    public static int INTERVAL = 4;//四条数据一组（3条数据加一条广告）
+    public static int INTERVAL = 6;//四条数据一组（5条数据加一条广告）
 
     public LinearAdapter(@NonNull List<NativeEntity> data) {
         super(data);
@@ -33,8 +32,7 @@ public class LinearAdapter extends BaseQuickAdapter<NativeEntity, BaseViewHolder
                 return nativeEntity.getItemType();
             }
         });
-        getMultiTypeDelegate()
-                .registerItemType(NativeEntity.TYPE_DATA, R.layout.item_native_linear_data)
+        getMultiTypeDelegate().registerItemType(NativeEntity.TYPE_DATA, R.layout.item_native_linear_data)
                 .registerItemType(NativeEntity.TYPE_AD, R.layout.item_native_linear_ad);
     }
 
