@@ -24,6 +24,7 @@ import com.qmui.android.mvp.presenter.MainPresenter;
 import com.qmui.android.mvp.presenter.MainPresenterImpl;
 import com.qmui.android.mvp.view.MainView;
 import com.qmui.android.ui.glide.GlideEngine;
+import com.qmui.android.util.SystemUtil;
 import com.qmui.android.util.ToastUtil;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
         recyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerview.setAdapter(mainAdapter);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.layout_main_header,null);
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_main_header, null);
         mainAdapter.setHeaderView(view);
 
         refreshlayout.setOnRefreshListener(this);
@@ -139,7 +140,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
                 break;
             case 7:
                 EasyPhotos.createCamera(this)//参数说明：上下文
-                        .setFileProviderAuthority("com.qmui.android.fileprovider")//参数说明：见下方`FileProvider的配置`
+                        .setFileProviderAuthority(SystemUtil.getPackageName() + ".custom.fileprovider")//参数说明：见下方`FileProvider的配置`
                         .start(new SelectCallback() {
                             @Override
                             public void onResult(ArrayList<Photo> photos, ArrayList<String> paths, boolean isOriginal) {
@@ -152,7 +153,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
                 break;
             case 9:
                 EasyPhotos.createAlbum(this, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority("com.qmui.android.fileprovider")
+                        .setFileProviderAuthority(SystemUtil.getPackageName() + ".custom.fileprovider")
                         .setPuzzleMenu(false)
                         .setCount(9)
                         .setSelectedPhotos(new ArrayList<Photo>())
