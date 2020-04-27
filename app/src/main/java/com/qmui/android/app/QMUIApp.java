@@ -3,7 +3,6 @@ package com.qmui.android.app;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
-
 import com.qmui.android.util.AdManager;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 

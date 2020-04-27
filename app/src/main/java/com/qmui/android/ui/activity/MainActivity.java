@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -190,6 +191,17 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
                 break;
             case 16:
                 startActivity(getIntent(this, new NativeAvtivity()));
+                break;
+            case 17:
+                EasyPhotos.createAlbum(this, false, GlideEngine.getInstance())
+                        .setPuzzleMenu(false)
+                        .setCleanMenu(false)
+                        .start(new SelectCallback() {
+                            @Override
+                            public void onResult(ArrayList<Photo> photos, ArrayList<String> paths, boolean isOriginal) {
+                                SkinActivity.startAct(MainActivity.this, paths.get(0));
+                            }
+                        });
                 break;
             default:
                 ToastUtil.showShortToastCenter(this, mainAdapter.getData().get(position));

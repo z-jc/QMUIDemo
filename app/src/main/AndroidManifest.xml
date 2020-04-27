@@ -84,6 +84,7 @@
         <activity android:name=".ui.activity.JiGuangShareActivity" />
         <activity android:name=".ui.activity.LogisticsActivity" />
         <activity android:name=".ui.activity.NativeAvtivity" />
+        <activity android:name=".ui.activity.SkinActivity" />
 
     </application>
 
