@@ -1,8 +1,8 @@
 package com.qmui.android.app;
 
+import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+
 import com.qmui.android.util.AdManager;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 
@@ -11,13 +11,12 @@ import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
  * Date : 2019/10/23
  * Describe :
  */
-public class QMUIApp extends MultiDexApplication {
+public class QMUIApp extends Application {
 
     public static Context context;
 
     @Override
     protected void attachBaseContext(Context base) {
-        MultiDex.install(this);
         AdManager.getInstance().initEntry(base);
         super.attachBaseContext(base);
     }

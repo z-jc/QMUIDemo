@@ -1,8 +1,6 @@
 package com.qmui.android.ui.activity;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,7 +18,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * CreateName : Z-JC
@@ -37,15 +34,12 @@ public class CustomActivity extends BaseActivity {
     public TextView text;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom);
-        EventBus.getDefault().register(this);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_custom;
     }
 
     public void initView() {
+        EventBus.getDefault().register(this);
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("自定义View");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {

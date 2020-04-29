@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.telephony.TelephonyManager;
 
 import com.qmui.android.app.QMUIApp;
-import com.sigmob.sdk.base.models.sigdsp.pb.App;
 
 import java.lang.reflect.Method;
 import java.util.Calendar;

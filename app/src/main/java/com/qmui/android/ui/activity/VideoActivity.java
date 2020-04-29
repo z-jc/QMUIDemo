@@ -1,7 +1,5 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +10,6 @@ import com.qmui.android.util.ToastUtil;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tcking.github.com.giraffeplayer.GiraffePlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -32,11 +29,8 @@ public class VideoActivity extends BaseActivity {
     private GiraffePlayer player;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_video;
     }
 
     @Override

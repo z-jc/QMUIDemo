@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 import com.qmui.android.R;
 import com.qmui.android.bean.NativeEntity;
 import com.qmui.android.ui.adapter.GridAdapter;
-import com.qmui.android.ui.adapter.LinearAdapter;
 import com.qq.e.o.utils.ILog;
 
 import java.util.ArrayList;

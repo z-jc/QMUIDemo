@@ -2,7 +2,6 @@ package com.qmui.android.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
@@ -10,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.qmui.android.R;
 import com.qmui.android.base.BaseActivity;
@@ -20,7 +18,6 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.bertsir.zbar.QrConfig;
 import cn.bertsir.zbar.QrManager;
 
@@ -34,16 +31,12 @@ public class QrCodeActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.topbar)
     public QMUITopBar topbar;
 
-
     private Vibrator vibrator;
     private QrCodeAdapter qrCodeAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrcode);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_qrcode;
     }
 
     /**

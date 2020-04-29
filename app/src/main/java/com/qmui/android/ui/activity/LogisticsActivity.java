@@ -2,7 +2,6 @@ package com.qmui.android.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -28,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.bertsir.zbar.QrConfig;
 import cn.bertsir.zbar.QrManager;
 
@@ -49,11 +47,8 @@ public class LogisticsActivity extends BaseActivity implements View.OnClickListe
     private CourierEntity courierEntity = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logistics);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_logistics;
     }
 
     /**

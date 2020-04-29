@@ -1,7 +1,5 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -12,11 +10,9 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.qmui.android.R;
 import com.qmui.android.base.BaseActivity;
 import com.qmui.android.ui.view.MaskTextView;
-import com.qmui.android.util.ToastUtil;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
 
@@ -39,11 +35,8 @@ public class ButtonActivity extends BaseActivity {
     public MaterialSpinner spinner;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_button);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_button;
     }
 
     @Override

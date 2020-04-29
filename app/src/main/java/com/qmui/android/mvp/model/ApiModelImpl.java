@@ -36,6 +36,7 @@ public class ApiModelImpl implements ApiModel {
                 list.add("15.物流查询");
                 list.add("16.加载多布局样式原生广告");
                 list.add("17.人像磨皮和美白");
+                list.add("18.jsoup网页解析");
                 listener.onSuccess(list);
             }
         }, 500);

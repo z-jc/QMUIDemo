@@ -1,8 +1,5 @@
 package com.qmui.android.ui.activity;
 
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,17 +12,14 @@ import com.qmui.android.R;
 import com.qmui.android.base.BaseActivity;
 import com.qmui.android.ui.glide.GlideEngine;
 import com.qmui.android.util.ExifInterfaceUtil;
-import com.qmui.android.util.ImageUtils;
 import com.qmui.android.util.ToastUtil;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import top.zibin.luban.CompressionPredicate;
 import top.zibin.luban.Luban;
@@ -41,11 +35,8 @@ public class ImageComPressionActivity extends BaseActivity {
     public QMUITopBar topbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_compression);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_image_compression;
     }
 
     @Override

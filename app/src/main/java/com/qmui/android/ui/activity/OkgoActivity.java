@@ -1,13 +1,9 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -18,7 +14,6 @@ import com.qmui.android.util.ToastUtil;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class OkgoActivity extends BaseActivity {
@@ -30,10 +25,12 @@ public class OkgoActivity extends BaseActivity {
     public QMUITopBar topbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_okgo);
-        ButterKnife.bind(this);
+    protected int getContentViewResId() {
+        return R.layout.activity_okgo;
+    }
+
+    @Override
+    public void initView() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         topbar.setTitle("约束布局和Okgo");
         topbar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
@@ -44,9 +41,6 @@ public class OkgoActivity extends BaseActivity {
             }
         });
     }
-
-    @Override
-    public void initView() {}
 
     private void okgo() {
         String url = "https://suggest.taobao.com/sug?code=utf-8&q=男士鞋&callback=cb";

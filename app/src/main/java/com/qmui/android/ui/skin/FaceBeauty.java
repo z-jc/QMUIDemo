@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.xiusdk.imageengine.ImageEngine;
+
 import java.io.File;
 
 public class FaceBeauty {

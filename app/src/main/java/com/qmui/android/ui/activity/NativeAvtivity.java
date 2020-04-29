@@ -1,7 +1,5 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -19,7 +17,6 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Author : Z-JC
@@ -41,11 +38,8 @@ public class NativeAvtivity extends BaseActivity {
     private MyPagerAdapter myPagerAdapter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_native);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_native;
     }
 
     public void initView() {

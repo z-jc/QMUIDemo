@@ -1,11 +1,8 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,17 +10,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.huantansheng.easyphotos.EasyPhotos;
 import com.huantansheng.easyphotos.callback.PuzzleCallback;
 import com.huantansheng.easyphotos.callback.SelectCallback;
 import com.huantansheng.easyphotos.models.album.entity.Photo;
 import com.qmui.android.R;
-import com.qmui.android.ui.adapter.MainAdapter;
 import com.qmui.android.base.BaseActivity;
 import com.qmui.android.mvp.presenter.MainPresenter;
 import com.qmui.android.mvp.presenter.MainPresenterImpl;
 import com.qmui.android.mvp.view.MainView;
+import com.qmui.android.ui.adapter.MainAdapter;
 import com.qmui.android.ui.glide.GlideEngine;
 import com.qmui.android.util.SystemUtil;
 import com.qmui.android.util.ToastUtil;
@@ -38,8 +34,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainAdapter.OnClicklinter, MainView, SwipeRefreshLayout.OnRefreshListener {
 
@@ -55,16 +49,13 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
     private QMUITipDialog tipDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initTopBar();
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_main;
     }
 
     @Override
     public void initView() {
+        initTopBar();
     }
 
     private void initTopBar() {
@@ -202,6 +193,9 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnClicklin
                                 SkinActivity.startAct(MainActivity.this, paths.get(0));
                             }
                         });
+                break;
+            case 18:
+                startActivity(getIntent(this, new JsoupActivity()));
                 break;
             default:
                 ToastUtil.showShortToastCenter(this, mainAdapter.getData().get(position));

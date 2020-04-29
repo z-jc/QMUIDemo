@@ -2,8 +2,6 @@ package com.qmui.android.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +14,6 @@ import com.qmui.android.ui.skin.GlobalDefinitions;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Author : Z-JC
@@ -45,11 +42,8 @@ public class SkinActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skin);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_skin;
     }
 
     @Override

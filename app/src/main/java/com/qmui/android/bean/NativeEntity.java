@@ -1,7 +1,5 @@
 package com.qmui.android.bean;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-
 /**
  * Author : Z-JC
  * Date : 2020/4/2

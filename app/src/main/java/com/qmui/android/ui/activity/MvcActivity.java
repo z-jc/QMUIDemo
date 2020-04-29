@@ -2,7 +2,6 @@ package com.qmui.android.ui.activity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
@@ -19,7 +18,6 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MvcActivity extends BaseActivity implements OnWeatherListener, View.OnClickListener {
 
@@ -36,11 +34,8 @@ public class MvcActivity extends BaseActivity implements OnWeatherListener, View
     public TextView tvData;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvc);
-        ButterKnife.bind(this);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_mvc;
     }
 
     /**

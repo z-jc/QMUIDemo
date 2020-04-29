@@ -1,6 +1,5 @@
 package com.qmui.android.ui.activity;
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)
@@ -27,18 +25,21 @@ public class TabActivity extends BaseActivity {
     private List<String> mData;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
-        ButterKnife.bind(this);
-        initData(1);
-        initView();
+    protected int getContentViewResId() {
+        return R.layout.activity_tab;
     }
 
-    private void initData(int pager) {
+    public void initData(int index) {
         mData = new ArrayList<>();
         for (int i = 1; i < 20; i++) {
-            mData.add("pager" + pager + " 第" + i + "个item");
+            mData.add("pager" + index + " 第" + i + "个item");
+        }
+    }
+
+    public void initData() {
+        mData = new ArrayList<>();
+        for (int i = 1; i < 20; i++) {
+            mData.add("pager" + 1 + " 第" + i + "个item");
         }
     }
 
